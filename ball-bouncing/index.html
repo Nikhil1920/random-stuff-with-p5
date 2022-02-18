@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Bouncing</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <script>
+        let ballX;
+        let ballY;
+        let ballDiameter = 100;
+        let ballXSpeed = 2;
+        let ballYSpeed = 2;
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            ballX = windowWidth / 2;
+            ballY = windowHeight / 2;
+        }
+
+        function draw() {
+            background("#222");
+            ellipse(ballX, ballY, ballDiameter, ballDiameter);
+            fill("#07C");
+            noStroke();
+
+            ballX += ballXSpeed;
+            ballY += ballYSpeed;
+
+            if (ballX > windowWidth - ballDiameter / 2 || ballX < ballDiameter / 2) {
+                ballXSpeed *= -1;
+            }
+            if (ballY > windowHeight - ballDiameter / 2 || ballY < ballDiameter / 2) {
+                ballYSpeed *= -1;
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+
+    </script>
+</body>
+
+</html>
